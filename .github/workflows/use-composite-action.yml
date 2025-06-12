@@ -6,6 +6,8 @@ jobs:
   build:
     runs-on: ubuntu-latest
     steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
       - name: Use my composite action
         uses: ./.github/actions/my-composite-action
         # For refercing it from another repo use 'uses: owner/repository/.github/actions/my-composite-action@v1'
