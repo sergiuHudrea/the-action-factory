@@ -17,4 +17,4 @@ jobs:
           node-version: '18'
 
       - name: Display result
-        run: echo "Script Result: ${{ steps.my-action.outputs.script-result }}"
+        run: 'echo "Script Result: ${{ steps.my-action.outputs.script-result }}"'
