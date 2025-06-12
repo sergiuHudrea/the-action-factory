@@ -16,5 +16,5 @@ jobs:
 
       - name: Verify CLI Installation
         run: |
-          echo "Checking MyCLI version..."
-          mycli --version
+          echo "Checking bat version..."
+          bat --version
