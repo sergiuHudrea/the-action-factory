@@ -9,12 +9,12 @@ jobs:
       - name: Checkout repo
         uses: actions/checkout@v2
         
-      - name: Install MyCLI
+      - name: Install bat
         uses: ./.github/actions/my-cli-action
         with:
           version: '1.2.3'
 
-      - name: Verify CLI Installation
+      - name: Verify bat Installation
         run: |
           echo "Checking bat version..."
-          bat --version
+          batcat --version
