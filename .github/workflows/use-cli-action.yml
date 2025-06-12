@@ -1,0 +1,20 @@
+ame: CLI action
+
+on: push
+
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v2
+        
+      - name: Install MyCLI
+        uses: ./.github/actions/my-cli-action
+        with:
+          version: '1.2.3'
+
+      - name: Verify CLI Installation
+        run: |
+          echo "Checking MyCLI version..."
+          mycli --version
