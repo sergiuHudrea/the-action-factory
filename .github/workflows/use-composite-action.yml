@@ -8,8 +8,13 @@ jobs:
     steps:
       - name: Checkout repo
         uses: actions/checkout@v2
+        
       - name: Use my composite action
+        id: my-action
         uses: ./.github/actions/my-composite-action
         # For refercing it from another repo use 'uses: owner/repository/.github/actions/my-composite-action@v1'
         with:
           node-version: '18'
+
+      - name: Display result
+        run: echo "Script Result: ${{ steps.my-action.outputs.script-result }}"
