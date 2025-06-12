@@ -17,17 +17,16 @@
 
 // run();
 
-
 const core = require('@actions/core');
 const { execSync } = require('child_process');
 
 async function run() {
   try {
-    console.log("Installing jq CLI...");
+    console.log("Installing bat CLI...");
 
-    execSync(`sudo apt-get update && sudo apt-get install -y jq`, { stdio: 'inherit' });
+    execSync(`sudo apt-get update && sudo apt-get install -y bat`, { stdio: 'inherit' });
 
-    console.log("jq installed successfully.");
+    console.log("bat installed successfully.");
   } catch (error) {
     core.setFailed(`Installation failed: ${error.message}`);
   }
