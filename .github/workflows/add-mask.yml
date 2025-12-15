@@ -1,0 +1,31 @@
+name: Mask demo
+
+on:
+  workflow_dispatch:
+
+jobs:
+  demo:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Set unmasked env var
+        run: |
+          # This simulates a value that is not a "secret"
+          echo "UNMASKED=visible-value" >> $GITHUB_ENV
+
+      - name: Print before add-mask
+        run: |
+          # This will show the raw value in the logs (not masked)
+          echo "Before add-mask: $UNMASKED"
+
+      - name: Add mask for the env var
+        run: |
+          # add-mask makes future occurrences of the text be hidden in logs
+          echo "::add-mask::$UNMASKED"
+
+      - name: Print after add-mask
+        run: |
+          # This will be masked in the logs (***** or [secure]) after add-mask
+          echo "After add-mask: $UNMASKED"
