@@ -34,10 +34,14 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - id: sets-a-secret
-        name: Generate, mask, and output a secret
+        name: Generate, mask, and output a secret 3 steps
         run: |
           the_secret="$(curl https://api.ipify.org/)"
           echo "::add-mask::$the_secret"
+          echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
+        name: Generate, mask, and output a secret in 2 steps
+        run: |
+          echo "::add-mask::$(curl https://api.ipify.org/)"
           echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
       - name: Use that secret output (protected by a mask)
         run: |
