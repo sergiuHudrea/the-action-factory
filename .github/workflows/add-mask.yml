@@ -39,7 +39,7 @@ jobs:
           the_secret="$(curl https://api.ipify.org/)"
           echo "::add-mask::$the_secret"
           echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
-        name: Generate, mask, and output a secret in 2 steps
+      - name: Generate, mask, and output a secret in 2 steps
         run: |
           echo "::add-mask::$(curl https://api.ipify.org/)"
           echo "secret-number=$the_secret" >> "$GITHUB_OUTPUT"
