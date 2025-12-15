@@ -47,7 +47,7 @@ jobs:
         run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
 
-    generate-a-secret-env:
+  generate-a-secret-env:
     runs-on: ubuntu-latest
     steps:
       - id: sets-a-secret
