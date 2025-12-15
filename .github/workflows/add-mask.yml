@@ -62,5 +62,15 @@ jobs:
       - name: Generate, mask, and output a secret in 2 steps
         run: |
           echo "secret-number=$the_secret" >> "$GITHUB_ENV"
+    
+  bash-example:
+    runs-on: ubuntu-latest
+    env:
+      MY_NAME: "Mona The Octocat"
+    steps:
+      - name: bash-version
+        run: echo "::add-mask::$MY_NAME"
+      - name: secret show
+        run: echo $MY_NAME
       
       
