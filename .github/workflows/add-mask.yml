@@ -46,3 +46,21 @@ jobs:
       - name: Use that secret output (protected by a mask)
         run: |
           echo "the secret number is ${{ steps.sets-a-secret.outputs.secret-number }}"
+
+    generate-a-secret-env:
+    runs-on: ubuntu-latest
+    steps:
+      - id: sets-a-secret
+        name: Generate, mask, and env 
+        run: |
+          the_secret="$(curl https://api.ipify.org/)"
+          echo "::add-mask::$the_secret"
+          echo "secret-number=$the_secret" >> "$GITHUB_ENV"
+      - name: Generate, mask, and output a secret in 2 steps
+        run: |
+          echo "::add-mask::$(curl https://api.ipify.org/)"
+      - name: Generate, mask, and output a secret in 2 steps
+        run: |
+          echo "secret-number=$the_secret" >> "$GITHUB_ENV"
+      
+      
